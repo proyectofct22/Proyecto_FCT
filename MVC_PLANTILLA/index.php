@@ -1,4 +1,9 @@
 <?php
-setcookie('PHPSESSID', '', time() - 86400, '/');
-include_once 'views/Views_Plantilla.php';
+	
+	//setcookie('PHPSESSID', '', time() - 86400, '/');
+
+	require_once "./Databases/Database.php";
+	
+	require_once "./Controllers/Controller_Login.php";
+
 ?>
