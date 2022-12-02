@@ -55,8 +55,6 @@
 				$torneo=(int)$torneo;
 				$Fecha=date('Y-m-d h:i:s');
 				iniciarTorneo($conexion,$torneo,$Fecha);
-				echo "<script>Swal.fire({ icon: 'success', title: '¡Enhorabuena!', text: 'El torneo se inició correctamente', showConfirmButton: false, })</script>";
-				header("Refresh:2");
 			} else {
 				echo "<script>Swal.fire({ icon: 'error', title: 'Error', text: 'Debe seleccionar un torneo', showConfirmButton: false, timer: 2000 })</script>";
 			}
@@ -92,7 +90,6 @@
 		$validar=(int)$validar[0];
 		$responsable=$_SESSION['idUsuario'];
 		$responsable=(int)$responsable;
-		
 		if($validar==8){
 			actualizarNuevoTorneo($conexion,$torneo,$Fecha);
 			$equipos=obtenerEquiposDelTorneo($conexion,$torneo);
@@ -125,8 +122,9 @@
 				
 			}
 			echo "<script>Swal.fire({ icon: 'success', title: '¡Enhorabuena!', text: 'El torneo se inició correctamente', showConfirmButton: false, })</script>";
+			header("Refresh:2");
 		} else {
-			echo "<script>Swal.fire({ icon: 'error', title: 'Error', text: 'Para iniciar el torneo debe añadir 8 equipos al mismo', showConfirmButton: false, })</script>";
+			echo "<script>Swal.fire({ icon: 'error', title: 'Error', text: 'Para iniciar el torneo debe añadir 8 equipos al mismo', showConfirmButton: false, timer: 2000, })</script>";
 		}
 	}
 

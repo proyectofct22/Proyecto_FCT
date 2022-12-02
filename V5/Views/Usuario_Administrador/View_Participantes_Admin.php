@@ -8,10 +8,11 @@
 	}
 </style>
 <div class="container py-5">
-	<div class="card border-light text-center text-white px-5 my-5" style="background:rgba(0,0,0,0.5);">
+	<div class="card border-light text-center text-white px-5 my-5" style="background:rgba(0,0,0,0.8);">
 		<h1 class="display-4 fuentePersonalizadaRegistrado pt-5">Participantes</h1>
+		<p class="lead">Seleccione el torneo y la fecha del que quiera ver los datos.</p>
 		<div class="card-body">
-			<div class="row g-4 pt-5">
+			<div class="row g-4">
 				<div class="col-lg-6">
 					<form method="POST" action="Controller_Participantes_Admin.php">
 						<h4>Seleccione un torneo</h4>
@@ -81,7 +82,6 @@
 														echo "<td>".$dato[$indice2][1]."&nbsp;".$dato[$indice2][2]."</td>";
 														echo "<td>".$dato[$indice2][3]."</td>";
 														echo "<td>".$dato[$indice2][4]."</td>";
-														// echo '<td><button type="button" name="'.$dato[$indice2][5].'" value="'.$dato[$indice2][5].'" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">'.$dato[$indice2][5].'</button></td>';
 														echo "<td><form method='post' action='Controller_Participantes_Admin.php'><input type='submit' class='btn btn-outline-dark' name='participantesEquipo' value='".$dato[$indice2][5]."'></form></td>";
 														echo "<td>Líder</td>";
 													echo "</tr>";
@@ -138,31 +138,3 @@
 		</div>
 	</div>
 </div>
-
-<!-- Modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-	<div class="modal-dialog">
-		<div class="modal-content">
-			<div class="modal-header">
-				<h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
-				<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-			</div>
-			<div class="modal-body">
-			<button class="btn btn-secondary">Aceptar</button>
-			<button class="btn btn-danger">Cancelar</button>
-			</div>
-			<div class="modal-footer">
-				<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-			</div>
-		</div>
-	</div>
-</div>
-
-<script type="text/javascript">
-const myModal = document.getElementById('myModal')
-const myInput = document.getElementById('myInput')
-
-myModal.addEventListener('shown.bs.modal', () => {
-	myInput.focus()
-})  
-</script>

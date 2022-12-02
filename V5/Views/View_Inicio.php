@@ -1,4 +1,6 @@
-<!-- INICIO -->
+<style type="text/css">
+	body { background-color: #121212; }
+</style>
 <section id="inicio" class="fondoInicio" style="min-height: 100vh;">
 	<div class="container">
 		<div class="row">
@@ -8,9 +10,6 @@
 		</div>
 	</div>
 </section>
-<!-- FIN INICIO -->
-
-<!-- TORNEOS -->
 <section id="torneos" style="min-height: 100vh; background-color: #121212;">
 	<div class="container pt-5">
 		<div class="row justify-content-center pt-5">
@@ -49,9 +48,6 @@
 		</div>
 	</div>
 </section>
-<!-- FIN TORNEOS -->
-
-<!-- EQUIPOS -->
 <section id="equipos" style="min-height: 100vh; background-color: #121212;">
 	<div class="container pt-5">
 		<div class="row justify-content-center pt-5">
@@ -90,9 +86,6 @@
 		</div>
 	</div>
 </section>
-<!-- FIN EQUIPOS -->
-
-<!-- INFORMACIÓN -->
 <section id="nosotros" style="min-height: 100vh; background-color: #121212;">
 	<div class="container pt-5">
 		<div class="row">
@@ -107,9 +100,6 @@
 		</div>
 	</div>
 </section>
-<!-- FIN INFORMACIÓN -->
-
-<!-- FOOTER -->
 <section style="min-height: 10vh;">
 	<footer>
 		<div class="text-center">
@@ -125,4 +115,3 @@
 		</div>
 	</footer>
 </section>
-<!-- FIN FOOTER -->

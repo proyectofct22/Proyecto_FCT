@@ -8,17 +8,17 @@
 	}
 </style>
 <div class="container py-5">
-	<div class="card border-light text-center text-white px-5 my-5" style="background:rgba(0,0,0,0.5);">
+	<div class="card border-light text-center text-white px-5 my-5" style="background:rgba(0,0,0,0.8);">
 		<h1 class="display-4 fuentePersonalizadaRegistrado pt-5">Gestionar partidos</h1>
+		<p class="lead">Seleccione el torneo y la fase que quiera gestionar. Cuando haya realizado todas las fases podrá finalizar el torneo.</p>
 		<div class="card-body">
 			<div class="row g-4" align="center">
 				<div class="col-lg-12">
-					<div class="pb-5" style="max-width: 50%;">
+					<div class="pb-5" style="max-width: 75%;">
 						<form method="POST" action="Controller_EditarPartido_Admin.php">
 							<div class="form-group pb-4">
 								<h4>Seleccione un torneo</h4>
 								<select class="form-select text-center" name="torneos" id="torneos">
-									<!-- <option selected disabled hidden>Seleccionar torneo</option> -->
 									<?php
 										$torneos=torneosActivos($conexion);
 										if (empty($torneos)) {
@@ -35,7 +35,6 @@
 							<div class="form-group pb-4">
 								<h4>Seleccione la fase del torneo</h4>
 								<select class="form-select text-center" name="fase" id="fase">
-									<!-- <option selected disabled hidden>Seleccionar fase</option> -->
 									<?php
 										$torneo=$_SESSION['torneos'];
 										$fases=fases($conexion,$torneo);
@@ -49,10 +48,13 @@
 									?>
 								</select>
 							</div>
-							<div class="pt-3">
-								<button name="MostrarPartidos" class="btn btn-outline-light" type="submit">Mostrar Partidos</button>
-								<!-- <button name="SiguienteRonda" class="btn btn-outline-light w-25" type="submit">Siguiente Ronda</button> -->
-								<button name="FinalizarTorneo" class="btn btn-outline-light" >Finalizar Torneo</button>
+							<div class="row gy-2 pt-2">
+								<div class="col-lg-6">
+									<button name="MostrarPartidos" class="btn btn-outline-light w-100" type="submit">Mostrar Partidos</button>
+								</div>
+								<div class="col-lg-6">
+									<button name="FinalizarTorneo" class="btn btn-outline-light w-100" >Finalizar Torneo</button>
+								</div>
 							</div>
 						</form>
 					</div>
@@ -119,7 +121,7 @@
 										}
 									echo "</table>";
 									echo '<form method="POST" action="Controller_EditarPartido_Admin.php">';
-									echo '<div class="text-center mb-5"><button name="SiguienteRonda" class="btn btn-outline-light" type="submit">Siguiente Ronda</button></div>';
+									echo '<div class="text-center mb-5"><button name="SiguienteRonda" class="btn btn-outline-light" type="submit">Terminar Ronda</button></div>';
 									echo '</form>';
 							}
 						}
@@ -136,7 +138,7 @@
 										<th width="100px">
 											<?php
 												echo "<form method='POST' action='Controller_EditarPartido_Admin.php'>";
-												echo "<button class='btn' type='submit' id='confirmar' name='confirmar'><img src='../../Media/IconoGuardado.png' width='30px'></button>";
+												echo "<button class='btn' type='submit' id='confirmar' name='confirmar'><img src='../../Media/Iconos/IconoGuardado.png' width='30px'></button>";
 											?>
 										</th>
 										<th width="100px">Fase</th>
@@ -176,7 +178,7 @@
 													<option value='$IDequipo2'>$equipo2</option>
 													</select></td>";
 												}
-												echo "<td><input class='form-control text-lg-center' type='text' name='resultado".$cont."' value='".$torneoDatos[$indice]['Resultado']."'/></td>";
+												echo "<td><input class='form-control text-lg-center' type='text' pattern='^[0-9]{1,2}[-][0-9]{1,2}$' name='resultado".$cont."' value='".$torneoDatos[$indice]['Resultado']."'/></td>";
 												echo "<td><input class='form-control text-lg-center' value='".$torneoDatos[$indice]['Fecha']."' type='date' name='fechaPartido".$cont."' /></td>";
 												echo "<td><select class='form-select text-lg-center' name='Turno".$cont."' id='Turno'>
 												<option value='".$torneoDatos[$indice]['Turno']."' hidden selected>".$torneoDatos[$indice]['Turno']."</option>

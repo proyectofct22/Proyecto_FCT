@@ -92,6 +92,7 @@
 					$idJuega=$equiposPerdedores[$indice][1];
 					actualizarTablaPartido($conexion,$idPartido,$fecha,$equipoGanador,$equipoPerdedor,$responsable);
 					actualizarTablaJuega($conexion,$idPartido,$resultado,$turno);
+					echo "<script>Swal.fire({ icon: 'info', title: 'Espere', text: 'Actualizando los datos de los partidos', showConfirmButton: false, timer: 2000 })</script>";
 				}
 			} else if(!empty($_POST['ganador1']) && !empty($_POST['ganador2']) && !empty($_POST['resultado1']) && !empty($_POST['resultado2']) && !empty($_POST['fechaPartido1']) && !empty($_POST['fechaPartido2']) && !empty($_POST['Turno1']) && !empty($_POST['Turno2']) && $_SESSION['fase']=='Semifinales'){
 				$torneo=$_SESSION['torneos'];
@@ -128,6 +129,7 @@
 
 					actualizarTablaPartido($conexion,$idPartido,$fecha,$equipoGanador,$equipoPerdedor,$responsable);
 					actualizarTablaJuega($conexion,$idPartido,$resultado,$turno);
+					echo "<script>Swal.fire({ icon: 'info', title: 'Espere', text: 'Actualizando los datos de los partidos', showConfirmButton: false, timer: 2000 })</script>";
 				}
 			} else if(!empty($_POST['ganador1'])  && !empty($_POST['resultado1']) && !empty($_POST['fechaPartido1']) && !empty($_POST['Turno1']) && $_SESSION['fase']=='Final'){
 				$torneo=$_SESSION['torneos'];
@@ -158,6 +160,8 @@
 
 					actualizarTablaPartido($conexion,$idPartido,$fecha,$equipoGanador,$equipoPerdedor,$responsable);
 					actualizarTablaJuega($conexion,$idPartido,$resultado,$turno);
+					echo "<script>Swal.fire({ icon: 'info', title: 'Espere', text: 'Actualizando los datos de los partidos', showConfirmButton: false, timer: 2000 })</script>";
+					echo "<script>Swal.fire({ icon: 'info', title: 'Información', text: 'A continuación puede finalizar el torneo seleccionando el torneo y la fase final.', showConfirmButton: false, timer: 2000 })</script>";
 				}
 			} else {
 				echo "<script>Swal.fire({ icon: 'error', title: 'Error', text: 'Rellene todos los campos de la tabla para continuar', showConfirmButton: false, timer: 2000 })</script>";
@@ -182,7 +186,7 @@
 				} else if($datosFase[0]==$datosFase[1] && $datosFase[2]==NULL){
 					echo "<script>Swal.fire({ icon: 'error', title: 'Error', text: 'Los cuartos ya se finalizaron', showConfirmButton: false, timer: 2000 })</script>";
 				} else{
-					echo "<script>Swal.fire({ icon: 'error', title: 'Error', text: 'Los cuartos no se han disputado aún', showConfirmButton: false, timer: 2000 })</script>";
+					echo "<script>Swal.fire({ icon: 'error', title: 'Error', html: 'Los cuartos no se han disputado aún.<br>Edite la tabla correctamente para continuar.', showConfirmButton: false, timer: 2000 })</script>";
 				}
 			} else if($fase=="Semifinales"){
 				$fase2="Final";
@@ -194,7 +198,7 @@
 				} else if($datosFase[0]==$datosFase[1] && $datosFase[2]==NULL){
 					echo "<script>Swal.fire({ icon: 'error', title: 'Error', text: 'Las semifinales ya se finalizaron', showConfirmButton: false, timer: 2000 })</script>";
 				} else{
-					echo "<script>Swal.fire({ icon: 'error', title: 'Error', text: 'Las semifinales no se han disputado aún', showConfirmButton: false, timer: 2000 })</script>";
+					echo "<script>Swal.fire({ icon: 'error', title: 'Error', html: 'Las semifinales no se han disputado aún.<br>Edite la tabla correctamente para continuar.', showConfirmButton: false, timer: 2000 })</script>";
 				}
 			}
 			else if($fase=="Final"){
@@ -211,7 +215,7 @@
 				} else if($datosFase[0]==$datosFase[1] && $datosFase[2]==NULL){
 					echo "<script>Swal.fire({ icon: 'error', title: 'Error', text: 'La final ya se ha disputado', showConfirmButton: false, timer: 2000 })</script>";
 				} else{
-					echo "<script>Swal.fire({ icon: 'error', title: 'Error', text: 'La final no se ha disputado aún', showConfirmButton: false, timer: 2000 })</script>";
+					echo "<script>Swal.fire({ icon: 'error', title: 'Error', html: 'La final no se ha disputado aún.<br>Edite la tabla correctamente para continuar.', showConfirmButton: false, timer: 2000 })</script>";
 				}
 			}
 		}

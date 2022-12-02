@@ -115,4 +115,18 @@ function esLiderEquipo($conexion, $idUsuario) {
 }
 
 
+# Obtener el id del torneo en el que se encuentra el equipo
+
+function torneoActivo($conexion, $idEquipo) {
+	try {
+		$stmt = $conexion->prepare("SELECT torneo FROM equipo WHERE idequipo = '".$idEquipo."'");
+		$stmt -> execute();
+		$resultado = $stmt -> fetchAll(PDO::FETCH_NUM);
+		return $resultado;	
+	} catch(PDOException $e) {
+		echo "Error: " . $e -> getMessage();
+	}
+}
+
+
 ?>

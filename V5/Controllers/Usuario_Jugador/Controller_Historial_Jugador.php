@@ -22,6 +22,7 @@
 				$torneo=$_POST['torneoFinalizado'];
 				$datos=datosDePartidos($conexion,$torneo);
 				mostrarPartidos($conexion,$datos,$tabla);
+				echo "<script>$('html,body').animate({scrollTop: document.body.scrollHeight},'fast');</script>";
 			} else {
 				echo "<script>swal({ title: '¡Error!', text: 'No hay partidos para mostrar', icon: 'error', buttons: false });</script>";
 			}

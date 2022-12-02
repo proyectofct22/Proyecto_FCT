@@ -8,8 +8,9 @@
 	}
 </style>
 <div class="container py-5">
-	<div class="card border-light text-center text-white px-5 my-5" style="background:rgba(0,0,0,0.5);">
+	<div class="card border-light text-center text-white px-5 my-5" style="background:rgba(0,0,0,0.8);">
 		<h1 class="display-4 fuentePersonalizadaRegistrado pt-5">Gestionar torneos</h1>
+		<p class="lead">Desde aqui podrá gestionar todas las opciones de los torneos.</p>
 		<div class="card-body">
 			<div class="row g-4">
 				<div class="col-lg-4">
@@ -29,29 +30,6 @@
 							</div>
 						</div>
 						<button name="CrearTorneo" class="btn btn-outline-light mt-3 w-100" type="submit">Crear</button>
-					</form>
-				</div>
-				<div class="col-lg-4">
-					<form method="POST" action="Controller_CrearTorneo_Admin.php">
-						<h4>Iniciar un torneo</h4>
-						<div class="row">
-							<div class="col">
-								<select class="form-select text-center" name="torneos" id="torneos" aria-label="torneos">
-									<option selected disabled hidden>Seleccionar torneo</option>
-									<?php
-										$torneos = torneosInactivos($conexion);
-										if (empty($torneos)) {
-											echo "<option disabled>No hay torneos</option>";
-										} else {
-											foreach ($torneos as $indice2 => $valor) {
-												echo "<option class='fw-normal fs-6 text-lg-center ' align='center' value='".$torneos[$indice2][0]."'>".$torneos[$indice2][1]."</option>";
-											}	
-										}
-									?> 
-								</select>
-							</div>
-						</div>
-						<button name="IniciarTorneo" class="btn btn-outline-light mt-3 w-100" type="submit">Iniciar</button>
 					</form>
 				</div>
 
@@ -78,12 +56,36 @@
 						<button name="VerEquipos" class="btn btn-outline-light mt-3 w-100" type="submit">Gestionar</button>
 					</form>
 				</div>
+				
+				<div class="col-lg-4">
+					<form method="POST" action="Controller_CrearTorneo_Admin.php">
+						<h4>Iniciar un torneo</h4>
+						<div class="row">
+							<div class="col">
+								<select class="form-select text-center" name="torneos" id="torneos" aria-label="torneos">
+									<option selected disabled hidden>Seleccionar torneo</option>
+									<?php
+										$torneos = torneosInactivos($conexion);
+										if (empty($torneos)) {
+											echo "<option disabled>No hay torneos</option>";
+										} else {
+											foreach ($torneos as $indice2 => $valor) {
+												echo "<option class='fw-normal fs-6 text-lg-center ' align='center' value='".$torneos[$indice2][0]."'>".$torneos[$indice2][1]."</option>";
+											}	
+										}
+									?> 
+								</select>
+							</div>
+						</div>
+						<button name="IniciarTorneo" class="btn btn-outline-light mt-3 w-100" type="submit">Iniciar</button>
+					</form>
+				</div>
 			</div>
 			<div class="row g-4 px-5">
 				<div class="col-lg-12">
 					<div class="py-5">
 						<form method="POST" action="">
-							<h4>Mostrar torneos creados</h4>
+							<h4>Ver torneos creados</h4>
 							<button name="MostrarTorneos" class="btn btn-outline-light" type="submit">Mostrar</button>
 						</form>
 					</div>

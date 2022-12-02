@@ -201,7 +201,7 @@ function comprobarFase($conexion,$fase,$torneo){
 
 function comprobarFaseParaFinalizarTorneo($conexion,$fase,$torneo){
     try {
-        $consulta=$conexion->prepare("SELECT idEquipoGanador WHERE partido.fasePartido='$fase' AND partido.torneoId='$torneo' AND partido.estadoPartido='Finalizado'");
+        $consulta=$conexion->prepare("SELECT idEquipoGanador FROM partido WHERE partido.fasePartido='$fase' AND partido.torneoId='$torneo' AND partido.estadoPartido='Finalizado'");
         $consulta->execute();
         $resultado= $consulta->fetch(PDO::FETCH_NUM);
         return $resultado;    

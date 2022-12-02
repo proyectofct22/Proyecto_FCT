@@ -3,7 +3,7 @@
 	function conexion() {
 		$servername = "localhost";
 		$username   = "root";
-		$password   = "root";
+		$password   = "";
 		$dbname     = "gamingroom";
 
 		try {

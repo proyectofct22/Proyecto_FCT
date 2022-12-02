@@ -7,8 +7,8 @@
 		background-attachment: fixed;
 	}
 </style>
-<div class="container centrarContenido pt-5">
-	<div class="card border-light pt-5 px-4 my-5 text-center" style="background:rgba(0,0,0,0.5);">
+<div class="container py-5">
+	<div class="card border-light py-5 px-5 my-5 text-center" style="background:rgba(0,0,0,0.8);">
 		<?php
 			$datosEquipo = datosEquipo($conexion, $_SESSION['idUsuario']);
 			if (!isset($datosEquipo[0])) { // Si el usuario no pertenece a ningún equipo
@@ -27,37 +27,32 @@
 		<?php
 			} else { // Si el usuario pertenece a un equipo
 		?>
-		<div class="row g-4 p-4">
+		<div class="row">
 			<div class="col">
 				<h1 class="display-4 text-white fuentePersonalizadaRegistrado">Historial</h1>
-				<!-- <div class="card rounded-4 border-light text-white" style="background:rgba(0,0,0,0.5);"> -->
-					<div class="p-5">
-						<p class="lead text-white">Seleccione un torneo del que ver el historial de partidos</p>
-						<form method="post" action="Controller_Historial_Jugador.php">
-							<select class="form-select text-center" name="torneoFinalizado" required>
-								<option selected disabled hidden>Seleccionar torneo</option>
-								<?php
-									$torneos=torneosFinalizados($conexion);
-									if (empty($torneos)) {
-										echo "<option disabled>No hay torneos</option>";
-									} else {
-										foreach ($torneos as $indice => $datos) {
-											echo "<option value='".$torneos[$indice][0]."'>".$torneos[$indice][1]."</option>";
-										}
-									}
-								?>
-							</select>
-							<br>
-							<input type='submit' class='w-50 btn btn-primary' name='MostrarPartidos' value="Mostrar">
-						</form>
-					</div>
-				<!-- </div> -->
+				<p class="lead text-white">Seleccione un torneo del que ver el historial de partidos</p>
+				<form method="post" action="Controller_Historial_Jugador.php">
+					<select class="form-select text-center mb-4" name="torneoFinalizado" required>
+						<option selected disabled hidden>Seleccionar torneo</option>
+						<?php
+							$torneos=torneosFinalizados($conexion);
+							if (empty($torneos)) {
+								echo "<option disabled>No hay torneos</option>";
+							} else {
+								foreach ($torneos as $indice => $datos) {
+									echo "<option value='".$torneos[$indice][0]."'>".$torneos[$indice][1]."</option>";
+								}
+							}
+						?>
+					</select>
+					<input type='submit' class='w-50 btn btn-primary' name='MostrarPartidos' value="Ver">
+				</form>
 			</div>
 		</div>
 		<?php
 			}
 		?>
-		<div class="row g-4 p-4">
+		<div class="row">
 			<div class="col">
 				<?php
 					function mostrarPartidos($conexion,$datos,$tabla) {
@@ -96,9 +91,7 @@
 										echo "<td class='table-light' colspan='5'>No hay datos</td>";
 										echo "</tr>";
 									}
-								?>
-							</table>
-				<?php
+							echo "</table>";
 						}
 					}
 				?>	

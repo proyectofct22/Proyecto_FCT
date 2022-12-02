@@ -22,15 +22,15 @@
 				$contador = comprobarTotalJugadoresEquipo($conexion, $equipo[0][0]);
 				if ($contador[0][0] < 5) {
 					agregarJugador($conexion, $equipo[0][0], $_POST['jugadorLibre']);
+					echo "<script>Swal.fire({ icon: 'success', title: '¡Enhorabuena!', text: 'Jugador agregado correctamente', showConfirmButton: false, })</script>";
 					header("Refresh:2");
-					echo "<script>swal({ title: '¡Enhorabuena!', text: 'Jugador agregado correctamente', icon: 'success', buttons: false });</script>";
 				} else {
+					echo "<script>Swal.fire({ icon: 'error', title: '¡Error!', text: 'El equipo está lleno actualmente', showConfirmButton: false, })</script>";
 					header("Refresh:2");
-					echo "<script>swal({ title: '¡Error!', text: 'El equipo está lleno actualmente', icon: 'error', buttons: false });</script>";
 				}
 			} else {
+				echo "<script>Swal.fire({ icon: 'error', title: '¡Error!', text: 'No ha seleccionado ningún jugador', showConfirmButton: false, })</script>";
 				header("Refresh:2");
-				echo "<script>swal({ title: '¡Error!', text: 'No ha seleccionado ningún jugador', icon: 'error', buttons: false });</script>";
 			}
 		}
 

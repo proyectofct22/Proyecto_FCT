@@ -7,8 +7,8 @@
 		background-attachment: fixed;
 	}
 </style>
-<div class="container">
-	<div class="pt-5 px-4 my-5 text-center">
+<div class="container py-5">
+	<div class="card border-light py-5 px-5 my-5 text-center text-white" style="background:rgba(0,0,0,0.8);">
 		<?php
 			$idEquipo = obtenerEquipo($conexion, $_SESSION['idUsuario']);
 			$nombreEquipo = obtenerNombreEquipo($conexion, $idEquipo[0][0]);
@@ -26,11 +26,11 @@
 
 			if (!empty($nombreEquipo) && $estadisticasEquipoVacia == false) { // Si el usuario tiene equipo y ha participado
 				echo '<h1 class="display-4 text-white fuentePersonalizadaRegistrado">Estadísticas de&nbsp;'.$nombreEquipo[0][0].'</h1>';
-				echo '<p class="lead text-white">Historial de victorias y derrotas de&nbsp;'.$nombreEquipo[0][0].' en los partidos y en los torneos.</p>';
+				echo '<p class="lead text-white">Historial de los resultados de&nbsp;'.$nombreEquipo[0][0].' en los partidos y en los torneos realizados.</p>';
 		?>
-			<div class="row pt-3 g-4 pb-5">
+			<div class="row">
 				<div class="col-lg-6">
-					<div class="card p-3">
+					<div class="card p-2 mb-2">
 						<div id="partidos"></div>
 						<?php
 							$partido = datosPartidos($conexion, $idEquipo[0][0]);
@@ -40,7 +40,7 @@
 					</div>
 				</div>
 				<div class="col-lg-6">
-					<div class="card p-3">
+					<div class="card p-2 mb-2">
 						<div id="torneos"></div>
 						<?php
 							$torneo = datosTorneos($conexion, $idEquipo[0][0]);
@@ -56,11 +56,11 @@
 		<?php
 			}
 		?>
-		<h1 class="display-4 text-white fuentePersonalizadaRegistrado">Estadísticas generales</h1>
-		<p class="lead text-white">Historial de victorias y derrotas de los equipos en los partidos y en los torneos.</p>
-			<div class="row pt-3 g-4">
+		<h1 class="display-4 fuentePersonalizadaRegistrado">Estadísticas generales</h1>
+		<p class="lead">Historial de los resultados de los equipos en los partidos y en los torneos realizados.</p>
+			<div class="row">
 				<div class="col-lg-6">
-					<div class="card p-3">
+					<div class="card p-2 mb-2">
 						<div id="partidosGlobales"></div>
 						<?php
 							$partidosGlobales = datosPartidosGlobales($conexion);
@@ -70,7 +70,7 @@
 					</div>
 				</div>
 				<div class="col-lg-6">
-					<div class="card p-3">
+					<div class="card p-2 mb-2">
 						<div id="torneosGlobales"></div>
 						<?php
 							$torneosGlobales = datosTorneosGlobales($conexion);

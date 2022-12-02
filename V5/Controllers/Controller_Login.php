@@ -17,7 +17,7 @@
 		$conexion = conexion();
 		// var_dump($_POST);
 		if (empty($_POST["nick"]) || empty($_POST["password"])) {
-			echo "<script>swal('Error', 'Dede rellenar los campos para iniciar sesión', 'error');</script>";
+			echo "<script>Swal.fire({ icon: 'error', title: 'Error', text: 'Dede rellenar los campos para iniciar sesión', showConfirmButton: false, timer: 2000})</script>";
 		} else if (loginUsuario($conexion, $_POST["nick"], MD5($_POST["password"]))) { // Si es correcto redirigimos
 			session_start();
 			$_SESSION["nick"] = $_POST["nick"];
@@ -30,7 +30,7 @@
 				header("Location: ./Usuario_Jugador/Controller_Perfil_Jugador.php");
 			}
 		} else { // Si no hay errores al rellenar los campos se muestra un error
-			echo "<script>swal('Error', 'Los datos introducidos son incorrectos', 'error');</script>";
+			echo "<script>Swal.fire({ icon: 'error', title: 'Error', text: 'Los datos introducidos son incorrectos', showConfirmButton: false, timer: 2000})</script>";
 		}
 	}
 

@@ -7,10 +7,11 @@
 		background-attachment: fixed;
 	}
 </style>
-<div class="container centrarContenido pt-5">
-	<div class="card border-light pt-5 px-4 my-5 text-center" style="background:rgba(0,0,0,0.5);">
+<div class="container py-5">
+	<div class="card border-light pt-5 px-4 my-5 text-center" style="background:rgba(0,0,0,0.8);">
 		<?php
 			$datosEquipo = datosEquipo($conexion, $_SESSION['idUsuario']);
+			// var_dump($datosEquipo[0]);
 			$datosEquipoJugador = datosEquipoJugador($conexion, $datosEquipo[0]);
 			if (empty($datosEquipoJugador)) { // Si el usuario no pertenece a ningún equipo
 				echo '<h1 class="display-4 text-white fuentePersonalizadaRegistrado">Equipo</h1>';
@@ -19,23 +20,19 @@
 				echo '<p class="lead text-white">Listado de jugadores que pertenecen al equipo.</p>';
 			}
 			if (isset($datosEquipo) && empty($datosEquipoJugador)) { // Si el usuario no pertenece a ningún equipo
-				echo '<div class="row g-4 p-4">';
-					echo '<div class="col">';
-						echo '<div class="text-white">';
-							echo '<div class="px-5">';
-								echo '<p class="lead text-white">No pertenece a ningún equipo.<br>¿Quiere crear el suyo propio?</p>';
-								echo "<form method='post'>";
-									echo '<input type="text" class="form-control text-center" name="nombreEquipo" placeholder="Nombre del equipo" required><br>';
-									echo "<input type='submit' class='w-100 btn btn-outline-light mb-5' name='crearEquipo' value='Crear equipo'>";
-								echo "</form>";
-							echo '</div>';
-						echo '</div>';
+				echo '<div class="row g-4">';
+					echo '<div class="col text-white px-5">';
+						echo '<p class="lead text-white">No pertenece a ningún equipo.<br>¿Quiere crear el suyo propio?</p>';
+						echo "<form method='post'>";
+							echo '<input type="text" class="form-control text-center" name="nombreEquipo" placeholder="Nombre del equipo" required><br>';
+							echo "<input type='submit' class='w-100 btn btn-outline-light mb-5' name='crearEquipo' value='Crear equipo'>";
+						echo "</form>";
 					echo '</div>';
 				echo '</div>';
 			}
 			$datosJugadoresEquipo = datosJugadoresEquipo($conexion, $datosEquipo[0]);
 			if (!empty($datosJugadoresEquipo)) { // Si el usuario pertenece a un equipo
-				echo '<div class="row row-cols-lg-5 g-4 p-4">';
+				echo '<div class="row row-cols-lg-5 g-4">';
 				foreach($datosJugadoresEquipo as $dato) {
 					$fondoJugador = "url('../../Media/Usuarios/FondoUsuario.jpg')";
 					$fotoJugador = "../../Media/Usuarios/".$dato[0].".jpg";
@@ -54,12 +51,17 @@
 					echo '</div>';
 				}
 				echo '</div>';
-				echo "<div class='pt-4'>";
-				$esLiderEquipo = esLiderEquipo($conexion, $_SESSION['idUsuario']);
-				if ($esLiderEquipo[0][0] == 'Si') {
-					echo "<a class='btn btn-outline-light w-25 mx-1 mb-5' href='./Controller_Gestionar_Equipo_Jugador.php'>Gestionar equipo</a>";
-				}
-				echo "<a class='btn btn-outline-light w-25 mx-1 mb-5' href='./Controller_Estadisticas_Equipo_Jugador.php'>Estadísticas del equipo</a>";
+				echo "<div class='row g-4 p-4 mb-4'>";
+					$esLiderEquipo = esLiderEquipo($conexion, $_SESSION['idUsuario']);
+					$torneoActivo = torneoActivo($conexion, $datosEquipo[0]);
+					if ($esLiderEquipo[0][0] == 'Si' && $torneoActivo[0][0] == NULL) { // Si el usuario es líder y su equipo no está en un torneo
+						echo "<div class='col'>";
+							echo "<a class='btn btn-outline-light w-100' href='./Controller_Gestionar_Equipo_Jugador.php'>Gestionar equipo</a>";
+						echo "</div>";
+					}
+					echo "<div class='col'>";
+						echo "<a class='btn btn-outline-light w-100' href='./Controller_Estadisticas_Equipo_Jugador.php'>Estadísticas del equipo</a>";
+					echo "</div>";
 				echo "</div>";
 			}
 		?>

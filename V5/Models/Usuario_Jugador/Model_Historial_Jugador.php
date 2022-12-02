@@ -21,7 +21,7 @@ function datosEquipo($conexion, $id) {
 
 function torneosFinalizados($conexion){
 	try {
-		$consulta=$conexion->prepare("SELECT idTorneo,nombreTorneo FROM torneo WHERE estado='Finalizado'");
+		$consulta=$conexion->prepare("SELECT idTorneo,nombreTorneo FROM torneo WHERE estado='Finalizado' OR estado='Activo'");
 		$consulta->execute();
 		$resultado= $consulta->fetchAll(PDO::FETCH_NUM);
 		return $resultado;	

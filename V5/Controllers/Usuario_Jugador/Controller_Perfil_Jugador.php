@@ -16,7 +16,7 @@
 			require_once "../../Views/Usuario_Jugador/View_Perfil_Jugador.php";
 			require_once "../../Views/Footer.php";
 			// Subir imagen
-			if (isset($_POST['cambiarImagen']) && $_POST['cambiarImagen'] == 'Confirmar') { // Si se envía el formulario
+			if (isset($_POST['cambiarImagen']) && $_POST['cambiarImagen'] == 'Confirmar subida') { // Si se envía el formulario
 				if (isset($_FILES['imagen']) && $_FILES['imagen']['error'] === UPLOAD_ERR_OK) { // Si se ha subido un archivo
 					$fileTmpPath = $_FILES['imagen']['tmp_name'];
 					$fileName = $_FILES['imagen']['name'];
@@ -26,23 +26,23 @@
 					$fileExtension = strtolower(end($filesegments)); // Guardamos la extensión del archivo
 					$newFileName = $_SESSION['idUsuario'].".".$fileExtension; // Asignamos el nombre y la extensión del fichero
 
-					$allowedfileExtensions = array('jpg', 'png'); // Extensiones aceptadas
+					$allowedfileExtensions = array('jpg'); // Extensiones aceptadas
 
 					if (in_array($fileExtension, $allowedfileExtensions)) { // Si la extensión del archivo está en el array
 						$uploadFileDir = '../../Media/Usuarios/'; // Ruta de subida
 						$dest_path = $uploadFileDir . $newFileName;
 						if (move_uploaded_file($fileTmpPath, $dest_path)) { // Si todo es correcto
-							echo "<script>swal({ icon: 'success', title: '¡Enhorabuena!', text: 'Se ha subido su imagen correctamente', buttons: false });</script>";
-							header("Refresh:5; url=./Controller_Perfil_Jugador.php");
+							echo "<script>Swal.fire({ icon: 'success', title: '¡Enhorabuena!', text: 'Se ha subido su imagen correctamente', showConfirmButton: false, })</script>";
+							header("Refresh:2 url=./Controller_Perfil_Jugador.php");
 						} else { // Si la ruta de guardado es incorrecta
 							error_reporting(0);
-							echo "<script>swal('Error', 'Hubo un error al subir la imagen.', 'error');</script>";
+							echo "<script>Swal.fire({ icon: 'error', title: 'Error', text: 'Hubo un error al subir la imagen', showConfirmButton: false, timer: 2000})</script>";
 						}
 					} else { // Si la extensión de la imagen no es válida
-						echo "<script>swal('Error', 'La imagen no es válida. Suba una imagen .".implode(',', $allowedfileExtensions)."', 'error');</script>";
+						echo "<script>Swal.fire({ icon: 'error', title: 'Error', text: 'La imagen no es válida. Suba una imagen .".implode(',', $allowedfileExtensions)."', showConfirmButton: false, timer: 2000})</script>";
 					}
 				} else { // Si no ha subido ninguna imagen
-					echo "<script>swal('Error', 'No ha subido ninguna imagen.', 'error');</script>";
+					echo "<script>Swal.fire({ icon: 'error', title: 'Error', text: 'No ha subido ninguna imagen', showConfirmButton: false, timer: 2000})</script>";
 				}
 			}
 	}

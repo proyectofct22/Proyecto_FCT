@@ -4,6 +4,9 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>Gaming Room LDV</title>
+	<!-- Logo -->
+	<link rel="icon" type="image/x-icon" href="../Media/Logo.png">
+	<link rel="icon" type="image/x-icon" href="../../Media/Logo.png">
 	<!-- Bootstrap CSS -->
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
 	<!-- Bootstrap JavaScript -->
@@ -21,25 +24,17 @@
 	<script src="https://code.highcharts.com/modules/exporting.js"></script>
 	<script src="https://code.highcharts.com/modules/export-data.js"></script>
 	<script src="https://code.highcharts.com/modules/accessibility.js"></script>
-
 	<style type="text/css">
-
-		body { /* Estilos generales para el cuerpo */
-			background-image: url('../Media/Fondo.jpg');
-			background-size: cover;
-			background-position: center;
-			background-repeat: no-repeat;
-			background-attachment: fixed;
-		}
-
-		@media all and (min-width: 992px) { /* Estilos para el menú */
+		/* Estilos para el menú */
+		@media all and (min-width: 992px) {
 			.navbar .nav-item .dropdown-menu{ display: none; }
 			.navbar .nav-item:hover .nav-link{  }
 			.navbar .nav-item:hover .dropdown-menu{ display: block; }
 			.navbar .nav-item .dropdown-menu{ margin-top: 0; }
 		}
 
-		.fondoInicio { /* Fondo de View_Inicio */
+		/* Fondo del inicio */
+		.fondoInicio {
 			background-image: url('../Media/Inicio/Fondo.gif');
 			background-size: cover;
 			background-position: center;
@@ -47,48 +42,20 @@
 			background-attachment: fixed;
 		}
 
-		.fondoGeneral { /* Fondo general */
-			background-image: url('../Media/Fondo.jpg');
-			background-size: cover;
-			background-position: center;
-			background-repeat: no-repeat;
-			background-attachment: fixed;
-		}
-
-		@font-face { font-family: OriginTech; src: url('../Fonts/OriginTech.otf'); } /* Cargamos la fuente personalizada */
-
-		.fuentePersonalizada { font-family: OriginTech; } /* Clase con la fuente personalizada */
-
+		/* Cargamos la fuente personalizada */
+		@font-face { font-family: OriginTech; src: url('../Fonts/OriginTech.otf'); }
 		@font-face { font-family: OriginTech; src: url('../../Fonts/OriginTech.otf'); }
-		
+		.fuentePersonalizada { font-family: OriginTech; }
 		.fuentePersonalizadaRegistrado { font-family: OriginTech; }
 
-		.columnasAltaUsuario { float: left; width: 48%; } /* Estilos para el alta de usuario */
+		/* Color de fondo */
+		.fondoOscuro { background-color: #121212; }
 
-		.fondoOscuro { background-color: #121212; } /* Color de fondo */
-
-		.centrarContenido { /* Centrar el contenido al medio de la página */
-			display: flex;
-			justify-content: center;
-			align-items: center;
-			text-align: center;
-			min-height: 100vh;
-		}
-
-		.popoverPersonalizado { /* Estilos para popovers */
-			--bs-popover-border-color: var(--bs-primary);
-			--bs-popover-header-bg: var(--bs-primary);
-			--bs-popover-header-color: var(--bs-white);
-		}
-			
+		/* Barra de desplazamiento personalizada */
 		::-webkit-scrollbar { width: 10px; } /* Ancho de la barra */
-
 		::-webkit-scrollbar-track { background: #f1f1f1; } /* Color de fondo de la barra */
-
 		::-webkit-scrollbar-thumb { background: #888; } /* Color de la posición de la barra */
-
 		::-webkit-scrollbar-thumb:hover { background: #555; } /* Color de la posición de la barra en hover */
-
 	</style>
 </head>
 <body>
